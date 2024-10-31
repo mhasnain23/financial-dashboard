@@ -37,7 +37,7 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
-    const latestInvoices = data.rows.map((invoice) => ({
+    const latestInvoices = data.rows.map((invoice: any) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
@@ -203,7 +203,7 @@ export async function fetchFilteredCustomers(query: string) {
 		ORDER BY customers.name ASC
 	  `;
 
-    const customers = data.rows.map((customer) => ({
+    const customers = data.rows.map((customer: any) => ({
       ...customer,
       total_pending: formatCurrency(customer.total_pending),
       total_paid: formatCurrency(customer.total_paid),
